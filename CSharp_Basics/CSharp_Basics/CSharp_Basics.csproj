@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProgramingLanguages.cs" />
+    <Compile Include="Locations.cs" />
+    <Compile Include="EmployeeIT.cs" />
+    <Compile Include="EmployeeTest.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="DataTypesAndVariables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringsAndItsOperations.cs" />

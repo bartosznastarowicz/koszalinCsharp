@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 
 namespace CSharp_Basics
@@ -11,6 +12,32 @@ namespace CSharp_Basics
     public class StringsAndItsOperations
     {
         private string Poem = "Powiem szczerze, znajomych mam wielu,Ale tylko do Ciebie mogę powiedzieć: Mój przyjacielu.Po dodaniu imienia wiersz będzie już wierszykiem spersonalizowanym:Powiem szczerze, znajomych mam wielu,Ale tylko do Ciebie Andrzeju mogę powiedzieć: Mój przyjacielu.";
+        [Test]
+        public void replace1()
+        {
+            char[] delimiters = {',', ':', ';', '.'};
+            string[] lines = Poem.Split(delimiters);
+            string parsedPoem = string.Join("\n", lines);
+
+            Console.WriteLine(parsedPoem);
+        }
+
+        [Test]
+        public void replace2()
+        {
+            string[] lines = Regex.Split(Poem, "(?<=[.,:;!?])");
+            string parsedPoem = string.Join("\n", lines);
+
+            Console.WriteLine(parsedPoem);
+        }
+
+        [Test]
+        public void replace3()
+        {
+            char[] delimiters = { ',', ':', ';', '.' };
+
+        }
+        
         /// <summary>
         /// String is diffrent then previues types we talk about
         /// values of string we are passing in quotation marks
@@ -38,29 +65,30 @@ namespace CSharp_Basics
         public void String_Initialization()
         {
             string itsEmpty = string.Empty;
-        {
-            double x = 5;
-            double y = 10;
-            double add = x + y;
-            string basic = "Sum of " + x + " and " + y + " is equal " + add;
-            string formated = string.Format("Sum of {0} and {1} is equal {2}", x, y, add);
-            string formatedNew = $"Sum of {x} and {y} is equal {add}";
-            int x = 6;
-            double z = 5;
-            string errorMessage = "There was error with operation values \n" + x + " and " + z;
-            string errorMessageFormat = string.Format("There was error with operation values \n{0} and {1}", x, z);
-            string errorMessageFormatDollar = $"There was error with operation values \n{x} and {z}               ";
-            Console.WriteLine(errorMessage);
-            Console.WriteLine(errorMessageFormat);
-            Console.WriteLine(errorMessageFormatDollar);
-            Assert.That(itsEmpty, Is.Not.Null);
-            Assert.IsEmpty(itsEmpty);
-            Assert.That(z, Is.EqualTo(6));
-            Console.WriteLine(basic);
-            Console.WriteLine(formated);
-            Console.WriteLine(formatedNew);
+            {
+                double x = 5;
+                double y = 10;
+                double add = x + y;
+                string basic = "Sum of " + x + " and " + y + " is equal " + add;
+                string formated = string.Format("Sum of {0} and {1} is equal {2}", x, y, add);
+                string formatedNew = $"Sum of {x} and {y} is equal {add}";
+                Console.WriteLine(basic);
+                Console.WriteLine(formated);
+                Console.WriteLine(formatedNew);
+                Assert.That(itsEmpty, Is.Not.Null);
+                Assert.IsEmpty(itsEmpty);
+                double z = 5;
+                string errorMessage = "There was error with operation values \n" + x + " and " + z;
+                string errorMessageFormat = string.Format("There was error with operation values \n{0} and {1}", x, z);
+                string errorMessageFormatDollar = $"There was error with operation values \n{x} and {z}               ";
+                Console.WriteLine(errorMessage);
+                Console.WriteLine(errorMessageFormat);
+                Console.WriteLine(errorMessageFormatDollar);
+                
+                Assert.That(z, Is.EqualTo(6));
+                
+            }
         }
-
         /// <summary>
         /// + is not best way of adding string
         ///  use string.Concat();
